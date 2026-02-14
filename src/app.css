@@ -1,1 +1,163 @@
 @import 'tailwindcss';
+
+@font-face {
+	font-family: 'MedievalSharp';
+	src: url('https://fonts.gstatic.com/s/medievalsharp/v24/EvOJzAlL3oU5AQl2mP5KdgptAq96MwvX.woff2')
+		format('woff2');
+	font-display: swap;
+}
+
+@theme {
+	/* Teal/Cyan — the glowing mist */
+	--color-teal-50: #e0faf8;
+	--color-teal-100: #b3f0ec;
+	--color-teal-200: #7ae4dc;
+	--color-teal-300: #45d3c8;
+	--color-teal-400: #2bbcb2;
+	--color-teal-500: #1a9a92;
+	--color-teal-600: #147b75;
+	--color-teal-700: #0f5e5a;
+	--color-teal-800: #0a3f3d;
+	--color-teal-900: #062625;
+
+	/* Emerald — the glowing vines */
+	--color-ember-50: #e4fbe8;
+	--color-ember-100: #b8f0c0;
+	--color-ember-200: #7ae09a;
+	--color-ember-300: #45cc72;
+	--color-ember-400: #2db85c;
+	--color-ember-500: #1a9648;
+	--color-ember-600: #147838;
+	--color-ember-700: #0f5a2a;
+	--color-ember-800: #0a3c1c;
+	--color-ember-900: #062410;
+
+	/* Mauve — the twilight sky */
+	--color-mauve-50: #f0e4f4;
+	--color-mauve-100: #d8bee2;
+	--color-mauve-200: #be94ce;
+	--color-mauve-300: #a46cb8;
+	--color-mauve-400: #8e52a4;
+	--color-mauve-500: #743e88;
+	--color-mauve-600: #5c306c;
+	--color-mauve-700: #452352;
+	--color-mauve-800: #2e1838;
+	--color-mauve-900: #1a0e20;
+
+	/* Deep navy backgrounds — the forest darkness */
+	--color-abyss-950: #04080f;
+	--color-abyss-900: #08101e;
+	--color-abyss-800: #0d1a30;
+	--color-abyss-700: #132642;
+	--color-abyss-600: #1c3358;
+	--color-abyss-500: #27436e;
+
+	/* Mist — light atmospheric blues for text */
+	--color-mist-50: #eef4fa;
+	--color-mist-100: #d4e2f0;
+	--color-mist-200: #b0c9e2;
+	--color-mist-300: #8ab0d4;
+	--color-mist-400: #6a98c2;
+	--color-mist-500: #4e7faa;
+	--color-mist-600: #3a6590;
+	--color-mist-700: #2a4c6e;
+	--color-mist-800: #1c344c;
+	--color-mist-900: #101e2e;
+
+	--font-medieval: 'MedievalSharp', 'Georgia', serif;
+}
+
+body {
+	background-color: var(--color-abyss-950);
+}
+
+/* Fixed background image layer */
+.bg-scene {
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	background: url('/hero.jpeg') center center / cover no-repeat;
+}
+
+.bg-scene::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background:
+		radial-gradient(ellipse at center, transparent 40%, rgba(4, 8, 15, 0.6) 85%, var(--color-abyss-950) 100%),
+		linear-gradient(180deg, rgba(4, 8, 15, 0.5) 0%, transparent 10%, transparent 80%, rgba(4, 8, 15, 0.7) 100%);
+	pointer-events: none;
+}
+
+/* Atmospheric side glows */
+.side-glow-left,
+.side-glow-right {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	width: 200px;
+	z-index: 1;
+	pointer-events: none;
+}
+
+.side-glow-left {
+	left: 0;
+	background: linear-gradient(90deg, rgba(10, 63, 61, 0.12) 0%, transparent 100%);
+}
+
+.side-glow-right {
+	right: 0;
+	background: linear-gradient(270deg, rgba(46, 24, 56, 0.12) 0%, transparent 100%);
+}
+
+/* Ornate separator — teal glow */
+.ornate-divider {
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		var(--color-teal-800) 15%,
+		var(--color-teal-500) 50%,
+		var(--color-teal-800) 85%,
+		transparent 100%
+	);
+	height: 1px;
+}
+
+/* Card style — used on all overlay panels */
+.card {
+	background-color: rgba(6, 12, 24, 0.93);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border: 1px solid rgba(26, 154, 146, 0.25);
+	border-radius: 0.5rem;
+	box-shadow:
+		0 0 1px 0 rgba(26, 154, 146, 0.3),
+		0 0 24px -4px rgba(45, 211, 200, 0.1),
+		0 8px 32px -4px rgba(0, 0, 0, 0.5);
+	transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.card:hover {
+	border-color: rgba(26, 154, 146, 0.4);
+	box-shadow:
+		0 0 1px 0 rgba(26, 154, 146, 0.45),
+		0 0 30px -4px rgba(45, 211, 200, 0.16),
+		0 8px 36px -4px rgba(0, 0, 0, 0.6);
+	background-color: rgba(10, 18, 34, 0.96);
+}
+
+/* Variant for form inputs */
+.card-input {
+	background-color: rgba(10, 18, 34, 0.9);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border: 1px solid rgba(26, 154, 146, 0.2);
+	border-radius: 0.375rem;
+	transition: border-color 0.2s;
+}
+
+.card-input:focus {
+	border-color: rgba(43, 188, 178, 0.6);
+	box-shadow: 0 0 0 1px rgba(43, 188, 178, 0.25);
+	outline: none;
+}

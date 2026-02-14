@@ -9,27 +9,38 @@
 </script>
 
 <div class="mb-6 flex items-center justify-between">
-	<h1 class="text-2xl font-bold">Category #{categoryId}</h1>
+	<div>
+		<a href="/forums" class="text-sm text-mist-600 hover:text-teal-400 transition">Forums</a>
+		<span class="mx-2 text-mist-800">/</span>
+		<span class="text-sm text-mist-400">{categoryId}</span>
+	</div>
 	<a
 		href="/forums/{categoryId}/new"
-		class="rounded bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-500"
+		class="rounded border border-teal-700/50 bg-teal-900/40 px-4 py-2 text-sm font-medium text-teal-300 hover:border-teal-600 hover:bg-teal-800/50 hover:text-teal-200 transition"
 	>
 		New Thread
 	</a>
 </div>
 
+<div class="ornate-divider mb-6"></div>
+
 {#if threads.length === 0}
-	<p class="text-gray-500">No threads yet. Be the first to start one.</p>
+	<div class="card p-8 text-center">
+		<p class="text-mist-600">No threads yet. Be the first to start one.</p>
+	</div>
 {:else}
-	<div class="space-y-3">
+	<div class="space-y-2">
 		{#each threads as thread}
 			<a
 				href="/forums/{categoryId}/{thread.id}"
-				class="block rounded-lg border border-gray-800 bg-gray-900 p-4 transition hover:border-gray-700"
+				class="card group block p-4"
 			>
-				<h2 class="font-semibold">{thread.title}</h2>
-				<p class="mt-1 text-sm text-gray-400">
-					by {thread.author} &middot; {thread.replyCount} replies
+				<div class="flex items-center justify-between">
+					<h2 class="font-semibold text-mist-200 group-hover:text-teal-300">{thread.title}</h2>
+					<span class="text-xs text-mist-700">{thread.replyCount} replies</span>
+				</div>
+				<p class="mt-1 text-sm text-mist-600">
+					by <span class="text-teal-500">{thread.author}</span>
 				</p>
 			</a>
 		{/each}

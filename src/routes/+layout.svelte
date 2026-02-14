@@ -9,9 +9,19 @@
 	<title>Hytherys Forum</title>
 </svelte:head>
 
-<div class="min-h-screen bg-gray-950 text-gray-100">
+<!-- Fixed background scene -->
+<div class="bg-scene"></div>
+<div class="side-glow-left"></div>
+<div class="side-glow-right"></div>
+
+<!-- Page content -->
+<div class="relative z-10 min-h-screen text-mist-200">
 	<Navbar />
-	<main class="mx-auto max-w-5xl px-4 py-8">
+	<div class="ornate-divider"></div>
+	<main class="mx-auto max-w-6xl px-4 py-8">
 		{@render children()}
 	</main>
+	<footer class="border-t border-teal-900/40 py-6 text-center text-sm text-mist-700">
+		Hytherys &mdash; A Hytale Community
+	</footer>
 </div>

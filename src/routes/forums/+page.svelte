@@ -4,34 +4,60 @@
 	// Placeholder data — replace with real data loading
 	const categories: Category[] = [
 		{
-			id: '1',
-			name: 'General Discussion',
-			description: 'Talk about anything and everything.',
+			id: 'news',
+			name: 'Announcements & News',
+			description: 'Official server updates, patch notes, and event schedules.',
 			threadCount: 0
 		},
 		{
-			id: '2',
-			name: 'Announcements',
-			description: 'Official news and updates.',
+			id: 'general',
+			name: 'General Discussion',
+			description: 'Talk about anything related to Hytherys and the server.',
+			threadCount: 0
+		},
+		{
+			id: 'lore',
+			name: 'Lore & Stories',
+			description: 'Share tales, history, and roleplay narratives from the realm.',
+			threadCount: 0
+		},
+		{
+			id: 'guilds',
+			name: 'Guilds & Factions',
+			description: 'Recruit members, form alliances, and manage your guild.',
+			threadCount: 0
+		},
+		{
+			id: 'builds',
+			name: 'Builds & Creations',
+			description: 'Showcase your builds, towns, and creations.',
+			threadCount: 0
+		},
+		{
+			id: 'help',
+			name: 'Help & Support',
+			description: 'Ask questions, report issues, and get assistance.',
 			threadCount: 0
 		}
 	];
 </script>
 
-<h1 class="mb-6 text-2xl font-bold">Forums</h1>
+<h1 class="font-medieval mb-8 text-3xl text-teal-300">Forums</h1>
 
-<div class="space-y-4">
+<div class="space-y-3">
 	{#each categories as category}
 		<a
 			href="/forums/{category.id}"
-			class="block rounded-lg border border-gray-800 bg-gray-900 p-5 transition hover:border-gray-700"
+			class="card group block p-5"
 		>
 			<div class="flex items-center justify-between">
 				<div>
-					<h2 class="text-lg font-semibold">{category.name}</h2>
-					<p class="mt-1 text-sm text-gray-400">{category.description}</p>
+					<h2 class="font-medieval text-lg text-mist-200 group-hover:text-teal-300">
+						{category.name}
+					</h2>
+					<p class="mt-1 text-sm text-mist-600">{category.description}</p>
 				</div>
-				<span class="text-sm text-gray-500">{category.threadCount} threads</span>
+				<span class="text-xs text-mist-700">{category.threadCount} threads</span>
 			</div>
 		</a>
 	{/each}
